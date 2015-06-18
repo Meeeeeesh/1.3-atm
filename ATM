@@ -1,0 +1,115 @@
+ATM
+
+Name/Account
+	name
+	pin
+
+amount requested
+check balance
+amount in account
+time of transaction 
+amount in ATM machine 
+daily limit
+
+enter name
+enter pin
+actions:
+	check balance
+	withdraw funds
+	cancel 
+
+if name and pin match
+
+check balance - return balance amount
+
+if I choose to withdraw
+	make sure atm has funds
+	withdraw request vs. existing balance
+	if all is good
+		dispense cash
+		update balance and return
+		thank them and exit
+
+name = "Ken"
+pin = "1234"
+user_available_funds = 20000
+atm_available_funds = 500000
+
+puts "Please enter your NAME below."
+print ">> "
+new_name = gets.chomp
+puts = "Please enter your PIN" 
+print ">> "
+new_pin = gets.chomp
+
+if new_name == name && new_pin == pin
+  puts %{
+	What banking function would you like to do today, #{name}?
+    1. Check Balance
+    2. Withdraw Funds 
+    3. Cancel Transaction
+  }
+  option = gets.chomp.to_i
+  print ">> "
+  case option
+  when 1 
+    puts "Your balance is #{available_funds}"
+  when 2
+    puts "Please enter the amount you would like to withdraw."
+    requested_amount = gets.chomp.to_i
+    if requested_amount >= atm_available_funds
+      puts "ATM funds not available."
+    elsif requested_amount >= user_available_funds
+      puts "Please take money"
+      user_available_funds -= requested_amounts
+      puts "New balance: #{user_available_funds}
+  when 3
+    puts "Thank you."
+  else
+  end
+else
+  puts "Incorrect. Please try again."
+end
+
+
+
+
+print "> "
+name = $stdin.gets.chomp
+
+balance, name, pin = ARGV
+
+  if name == "#{name}"
+	puts "Welcome, #{name}! Please enter your PIN NUMBER below."
+  else
+  	puts "Incorrect. Please try again."
+  end
+
+print "> "
+name = $stdin.gets.chomp
+
+puts %{
+	What banking function would you like to do today, #{name}?
+    1. Withdraw
+    2. Deposit
+    3. Check Balance
+    4. Transfer Funds
+    5. Cancel
+}
+
+  print "> "
+  answer = $stdin.gets.chomp
+
+  if answer == "1"
+    puts "How much would you like to withdraw?"
+  elsif answer == "2"
+    puts "What amount would you like to deposit? #{amount}"
+  elsif answer == "3"
+  	puts "Your existing balance is, #{balance}"
+  elsif answer == "4"
+  	puts "What amount would you like to transfer?"
+  else 
+    puts "Canceling." 
+  end
+
+
