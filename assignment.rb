@@ -65,33 +65,3 @@ puts "Select an option from the menu."
     else
       puts "Try again." unless cmd == "4"
     end
-
-# class Bank
-
-#   def initialize(accounts)
-#     @accounts = accounts
-#   end
-
-#   def account_from(name, pin)
-#     user_id = @accounts[name]
-#     return user_id[:account] if user_id[:user_id].verify_pin?(pin)
-#   end
-# end
-
-# class User_id
-
-#   attr_reader :first_name, :last_name
-
-#   def initialize(first_name, last_name, pin)
-#     @first_name, @last_name = first_name, last_name
-#     @pin = pin
-#   end
-
-#   def name
-#     "#{@first_name} #{@last_name}"
-#   end
-
-#   def verify_pin?(pin)
-#     pin == @pin
-#   end
-# end
