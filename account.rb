@@ -1,74 +1,40 @@
-require './bank_account.rb'
-
-cmd = ""
-account = BankAccount.new
-
-puts "Welcome #{account.name}"
-
-while cmd != "4" do
-  puts "Select an option from the menu."
-  puts %{
-    1: Check Balance(w)ithdraw
-    2: Withdraw Funds(d)eposit
-    3: Deposit Funds(c)heck
-    4: Cancel
-  }
-  cmd = gets.chomp
-
-  case cmd
-  when "1"
-    puts "Your existing balance is $%.2f\n" % account.balance
-  when "2"
-    puts "What amount would you like to withdraw?"
-      amount = gets.chomp.to_i
-      account.withdraw(amount)
-  when "3"
-    puts "What amount would you like to deposit?"
-      amount = gets.chomp.to_i
-      account.deposit(amount)
-  when "4"
-    puts "Canceling transaction."
-  else
-    puts "Didn't understand your command. Try again." unless cmd == "4"
-  end
-end
-
-class Bank
-  attr_reader :name, :balance
+class BankAccount
+  attr_reader :name, :balance, :pin
 
   def initialize(name)
     @name = name
     @transactions = []
     @balance = 0.0
-  end
-
-  def withdraw(amount)
-    puts "What amount would you like to withdraw?"
-    self.available_funds -= amount
-    puts "$#{amount} has been successfully withdrawn." 
-  end
-  
-  def deposit(amount)
-    puts "What amount would you like to deposit? "
-    self.available_funds += amount
-    puts "$#{amount} has been sucessfully deposited."
+    @pin = ""
   end
 
   def show_balance
     puts "Your existing balance is $#{@balance}."
   end
+
+  def withdraw(amount)
+    puts "What amount would you like to withdraw?"
+    @balance -= amount.to_f
+    puts "$%.2f has been successfully withdrawn.\n" % amount
+  end
+
+  def deposit(amount)
+    puts "What amount would you like to deposit? "
+    @balance += amount.to_f
+    puts "$%.2f has been successfully deposited.\n" % amount
+  end
 end
 
-bank = Bank.new("existing_user")
+bank = BankAccount.new("existing_user")
 bank.class
 
-user = User.new({ name:....})
+user = Atm.new({ name:....})
 existing_user = [user1, user2]
 
 selected_option = []
-account = Bank.new("existing_user")
+account = BankAccount.new("existing_user")
 existing_user = [
-  { name: "Hitler", 
+  { name: "Tibby", 
     pin: "1234",
     available_funds: 2000 },
   { name: "Balls", 
@@ -128,33 +94,3 @@ if existing_user
       puts "Try again." unless cmd == "5"
     end
 end
-
-# class Bank
-
-#   def initialize(accounts)
-#     @accounts = accounts
-#   end
-
-#   def account_from(name, pin)
-#     user_id = @accounts[name]
-#     return user_id[:account] if user_id[:user_id].verify_pin?(pin)
-#   end
-# end
-
-# class User_id
-
-#   attr_reader :first_name, :last_name
-
-#   def initialize(first_name, last_name, pin)
-#     @first_name, @last_name = first_name, last_name
-#     @pin = pin
-#   end
-
-#   def name
-#     "#{@first_name} #{@last_name}"
-#   end
-
-#   def verify_pin?(pin)
-#     pin == @pin
-#   end
-# end
